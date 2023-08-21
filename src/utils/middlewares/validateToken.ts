@@ -1,8 +1,9 @@
 import { Request as ExpressRequest, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-import { IUser } from '../models/Users';
+import { IUser } from '../../models/Users';
+import dotenv from "dotenv";
 dotenv.config();
+
 
 // extender una interfaz existente para agregarle propiedades adicionales o modificar su comportamiento.  
 // extender la interfaz Request de Express para agregar la propiedad user con el tipo IUser.
@@ -10,7 +11,7 @@ interface Request extends ExpressRequest {
   user?: IUser; 
 }
 
-export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
+export const validateToken = (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = req.header('Authorization');
     if (!token) {

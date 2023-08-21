@@ -1,6 +1,9 @@
-import express, {Request, Response} from 'express';
+import express from 'express';
 import cors from 'cors'
-const userRoutes = require('../routes/users/userRoutes')
+import userRoutes from '../routes/users/userRoutes';
+import postRoutes from '../routes/posts/postRoutes';
+import adminRoutes from '../routes/auth/adminRoutes';
+
 
 const server = express();
 
@@ -8,10 +11,10 @@ const server = express();
 server.use(express.json());
 server.use(cors())
 
-server.get('/', (_eq: Request,res:Response)=> {
-    res.send('Welcome to my backend project!');
-   })
-//faltan rutas y routeError
+//outeError
 server.use('/user', userRoutes)
+server.use('/posts', postRoutes)
+server.use('/auth', adminRoutes)
+
 export default server;
 
