@@ -3,7 +3,7 @@ import User, { IUser } from "../../models/Users";
 import { AddUserDTO } from "./interface";
 import bcrypt from "bcrypt";
 // import dotenv from "dotenv";
-import { generateJWT } from "../../middlewares/generateToken";
+import { generateJWT } from "../../utils/middlewares/generateToken";
 // dotenv.config();
 
 export const registerController = async (req: Request, res: Response) => {
